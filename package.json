@@ -5,6 +5,7 @@
   "description": "Project 15 (backend) - Driven Course",
   "main": "src/app.js",
   "scripts": {
+    "start": "node src/app.js",
     "dev": "nodemon src/app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },

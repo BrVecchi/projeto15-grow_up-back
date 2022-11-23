@@ -7,5 +7,5 @@ const mongoClient = new MongoClient(process.env.MONGO_URI);
 let db;
 
 await mongoClient.connect();
-db = mongoClient.db("my-wallet");
+db = mongoClient.db("grow-up");
 export default db;
