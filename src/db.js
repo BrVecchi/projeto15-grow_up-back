@@ -8,4 +8,5 @@ let db;
 
 await mongoClient.connect();
 db = mongoClient.db("grow-up");
+
 export default db;
