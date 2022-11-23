@@ -3,4 +3,4 @@ import { getProducts } from "../controllers/productsController.js"
 
 export const router = express.Router()
 
-router.post("/products", getProducts)
+router.get("/products", getProducts)
