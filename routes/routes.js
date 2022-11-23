@@ -1,6 +1,6 @@
 import express from "express"
-import { postSupplements } from "../controllers/newSupController.js"
+import { getProducts } from "../controllers/productsController.js"
 
 export const router = express.Router()
 
-router.post("/supplements", postSupplements)
+router.post("/products", getProducts)
