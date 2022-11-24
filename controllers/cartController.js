@@ -26,3 +26,18 @@ export const postCart = async (req, res) => {
     res.sendStatus(500);
   }
 };
+
+export const getCart = async (req, res) => {
+  const token = req.token;
+  console.log(token)
+  try {
+    const session = await sessionsCollection.findOne({ token });
+    const userId = session.userId;
+    const cart = await cartColletcion.find({ userId }).toArray();
+    res.status(200).send(cart);
+  } catch (err) {
+    console.log(err);
+    res.sendStatus(500);
+  }
+};
+
