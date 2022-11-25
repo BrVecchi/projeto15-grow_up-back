@@ -29,7 +29,6 @@ export const postCart = async (req, res) => {
 
 export const getCart = async (req, res) => {
   const token = req.token;
-  console.log(token)
   try {
     const session = await sessionsCollection.findOne({ token });
     const userId = session.userId;
@@ -41,3 +40,15 @@ export const getCart = async (req, res) => {
   }
 };
 
+export const deleteCart = async (req, res) => {
+  const token = req.token;
+  try {
+    const session = await sessionsCollection.findOne({token});
+    const userId = session.uderId;
+    await cartColletcion.deleteOne({userId});
+    res.sendStatus(202)
+  } catch (err) {
+    console.log(err)
+    res.sendStatus(500)
+  }
+}
