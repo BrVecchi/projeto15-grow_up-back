@@ -9,13 +9,6 @@ export const signUp = async (req, res) => {
   const user = req.body;
 
   try {
-    const { email } = req.body;
-    const emailValidation = await usersCollection.findOne({ email });
-
-    if (emailValidation) {
-      res.status(409).send("Este e-mail já foi cadastrado!");
-      return;
-    }
     const hashPassword = bcrypt.hashSync(user.password, 10);
 
     await usersCollection.insertOne({ ...user, password: hashPassword });
@@ -27,14 +20,10 @@ export const signUp = async (req, res) => {
 };
 
 export const signIn = async (req, res) => {
-  const { email, password } = req.body;
+  const { password } = req.body;
+  const userValidation = req.userValidation
 
   try {
-    const userValidation = await usersCollection.findOne({ email });
-    if (!userValidation) {
-      res.status(401).send("Usuário não cadastrado!");
-      return;
-    }
 
     const token = uuidV4();
     const passwordValidation = bcrypt.compareSync(
