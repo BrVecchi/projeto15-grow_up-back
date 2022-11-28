@@ -1,7 +1,7 @@
 export const tokenMiddleware = (req, res, next) => {
-  const { authorization } = req.headers;
+  const { Authorization } = req.headers;
 
-  const token = authorization?.replace("Bearer ", "");
+  const token = Authorization?.replace("Bearer ", "");
 
   if (!token) {
     return res.sendStatus(401);
