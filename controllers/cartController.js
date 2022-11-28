@@ -32,7 +32,7 @@ export const getCart = async (req, res) => {
   try {
     const session = await sessionsCollection.findOne({ token });
     const userId = session.userId;
-    const cart = await cartColletcion.find({ userId }).toArray();
+    const cart = await cartColletcion.find({ userId: userId }).toArray();
     res.status(200).send(cart);
   } catch (err) {
     console.log(err);

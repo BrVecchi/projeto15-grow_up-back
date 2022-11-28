@@ -6,7 +6,6 @@ export const getProducts = async (req, res) => {
     try {
         const products = await productsCollection.find().toArray()
         res.status(201).send(products)
-        console.log(products)
     } catch (error) {
         res.status(404).send(error)
     }
